@@ -1,5 +1,3 @@
-import exp from "constants"
-
 export async function GET() {
   return new Response(JSON.stringify({ test: "get" }), {
     headers: { 'Content-Type': 'application/json' },
