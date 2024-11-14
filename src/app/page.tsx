@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default function Page() {
   return (
     <div className="w-screen h-screen text-white text-center bg-gradient-to-tr from-[#EA4080] to-[#EE805F] grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pt-48 gap-16 sm:p-20">
       <main className="flex flex-col gap-8 row-start-2 items-center">
