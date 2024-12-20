@@ -1,18 +1,7 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./styles/globals.css";
+import "@/styles/globals.css";
+import { geistMono, geistSans } from "@/fonts/fonts";
 import Head from "next/head";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Matcha",
@@ -32,7 +21,7 @@ export default function RootLayout({
         {/* Add other head elements here, like link or meta tags */}
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.className} ${geistMono.className} antialiased`}
       >
         {children}
       </body>
