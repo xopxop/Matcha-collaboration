@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { geistMono, geistSans } from "@/fonts/fonts";
-import Head from "next/head";
+import { inter } from "@/fonts/fonts";
 
 export const metadata: Metadata = {
   title: "Matcha",
@@ -15,13 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <title>{String(metadata.title)}</title>
-        <meta name="description" content={metadata.description ?? ''} />
-        {/* Add other head elements here, like link or meta tags */}
-      </Head>
       <body
-        className={`${geistSans.className} ${geistMono.className} antialiased`}
+        className={`${inter.className} antialiased`}
       >
         {children}
       </body>
