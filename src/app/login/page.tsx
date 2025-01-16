@@ -14,48 +14,26 @@ export default function Page() {
   //   authenticate,
   //   undefined,
   // );
-  const searchParams = useSearchParams();
   const router = useRouter();
 
-  const [currentStep, setCurrentStep] = useState(parseInt(searchParams.get('step') || '1', 10));
-
-  const goToNextStep = () => {
-    setCurrentStep(currentStep + 1);
-    router.push(`?step=${currentStep + 1}`);
-  };
-
-  const goToPreviousStep = () => {
-    if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
-      router.push(`?step=${currentStep - 1}`);
-    }
-    else {
-      router.push('/');
-    }
-  };
-
+  const [currentStep, setCurrentStep] = useState(0);
   const [email, setEmail] = useState('');
 
-  const handleEmail = (formData: FormData) => {
-    console.log('handleEmailLogin', formData);
-    setEmail(formData.get('email')?.toString() || '');
-    // formAction(formData);
-    // If verification code sent go to next step
-    goToNextStep();
-  }
-  const handleVerification = (formData: FormData) => {
-    console.log('handleVerification', formData);
-    // Combine the digits into a single string
-    // const formData = new FormData(event.currentTarget); // Create FormData from the form
-    // formData.append('verificationCode', verificationCode); // Append the verification code to the FormData
-    // formAction(formData);
+  const nextStep = () => {
+    setCurrentStep(currentStep + 1);
+  };
+
+  const previousStep = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    };
   }
 
   return (
     <div className="items-center justify-items-center text-center min-h-screen p-6">
       <div className="flex justify-between items-center w-full">
       <div className="w-8">
-        <BackButton onClick={goToPreviousStep}/>
+        <BackButton onClick={currentStep === 0 ? () => router.back() : previousStep}/>
       </div>
       <div className="flex-grow flex justify-center">
         <Image
@@ -68,10 +46,10 @@ export default function Page() {
         />
       </div>
       </div>
-      {currentStep === 1 ?
-      <EmailForm formAction={handleEmail} email={email} setEmail={setEmail}/>
+      {currentStep === 0 ?
+      <EmailForm email={email} setEmail={setEmail} nextStep={nextStep}/>
       :
-      <VerificationCodeForm formAction={handleVerification} email={email}/>}
+      <VerificationCodeForm email={email}/>}
     </div>
   );
 }

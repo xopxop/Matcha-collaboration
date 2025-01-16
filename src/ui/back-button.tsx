@@ -1,4 +1,4 @@
-import { Button } from "@/ui/button"; // Adjust the import path as necessary
+import { Button } from "@/ui/button";
 import Image from 'next/image';
 
 interface BackButtonProps {

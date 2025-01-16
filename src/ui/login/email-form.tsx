@@ -2,29 +2,37 @@ import { useEffect, useState } from "react";
 import { Button } from "@/ui/button";
 
 interface EmailFormProps {
-	formAction: (formData: FormData) => void;
 	email: string;
 	setEmail: (email: string) => void;
+  nextStep: () => void;
   }
   
-export const EmailForm = ({formAction, email, setEmail}: EmailFormProps) => {
+export const EmailForm = ({ email, setEmail, nextStep}: EmailFormProps) => {
 	const [isValid, setIsValid] = useState(false);
   
 	const validateEmail = (email: string) => {
 	  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	  return regex.test(email);
 	};
+
+  const handleEmail = (formData: FormData) => {
+    console.log('handleEmailLogin', formData);
+    setEmail(formData.get('email')?.toString() || '');
+    // formAction(formData);
+    // If verification code sent -> go to next step
+    nextStep();
+  }
   
 	useEffect(() => {
 	  setIsValid(validateEmail(email));
 	}, [email]);
   
 	return (
-	  <form action={formAction} className="space-y-3">
+	  <form action={handleEmail} className="space-y-3">
       <div className="w-full pt-10 p-8 sm:max-w-[640px] sm:mx-auto">
-        <h1 className="text-4xl font-bold text-left sm:text-center">My email is</h1>
+        <label className="text-4xl block font-bold text-left sm:text-center" htmlFor="email">My email is</label>
         <input
-          className="my-4 w-full sm:max-w-80 rounded-md border border-gray-200 py-[9px] pl-4 text-sm outline-2 placeholder:text-gray-500"
+          className="my-4 w-full sm:max-w-80 border-b border-slate-700 py-[9px] pl-4 text-sm outline-2 placeholder:text-gray-500"
           id="email"
           type="email"
           name="email"

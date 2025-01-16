@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { Button } from "@/ui/button";
 
 interface VerificationCodeFormProps {
-	formAction: (formData: FormData) => void;
 	email: string;
   }
   
-export const VerificationCodeForm = ({formAction, email}: VerificationCodeFormProps) => {
+export const VerificationCodeForm = ({ email }: VerificationCodeFormProps) => {
 	const [code, setCode] = useState(['', '', '', '', '', '']);
 	const [isComplete, setIsComplete] = useState(false);
 	const [showError, setShowError] = useState(false);
@@ -28,6 +27,14 @@ export const VerificationCodeForm = ({formAction, email}: VerificationCodeFormPr
       }
 	  }
 	};
+
+  const handleVerification = (formData: FormData) => {
+    console.log('handleVerification', formData);
+    // Combine the digits into a single string
+    // const formData = new FormData(event.currentTarget); // Create FormData from the form
+    // formData.append('verificationCode', verificationCode); // Append the verification code to the FormData
+    // formAction(formData);
+  }
   
 	const handleKeyDown = (index: number, event: React.KeyboardEvent<HTMLInputElement>) => {
 	  // Move to the previous input on backspace
@@ -44,9 +51,9 @@ export const VerificationCodeForm = ({formAction, email}: VerificationCodeFormPr
 	}, [code]);
   
 	return (
-	  <form action={formAction} className="space-y-3">
+	  <form action={handleVerification} className="space-y-3">
       <div className="w-full pt-10 p-8 sm:max-w-[640px] sm:mx-auto">
-        <h1 className="text-4xl font-bold text-left sm:text-center">My code is</h1>
+        <label className="text-4xl block font-bold text-left sm:text-center">My code is</label>
         <p className="text-sm text-light text-left my-4 sm:text-center">{email}</p>
         <div className="w-full">
           {code.map((digit, index) => (
