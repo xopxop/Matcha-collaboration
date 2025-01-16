@@ -37,7 +37,7 @@ export default function Page() {
             </Link>
           </li>
           <li className="mb-2">
-          <Link href={'/login?step=1'}>
+          <Link href={'/login'}>
             <div className="w-80 h-12 rounded-full border-solid border-2 border-white flex items-center justify-center">
               <p>
                 SIGN IN WITH EMAIL
