@@ -12,13 +12,19 @@ const SearchBar = () => {
   );
 }
 
-const Profile = ({ highLighted = false }: { highLighted?: boolean }) => {
+const Profile = (
+  {
+    className = "",
+    highLighted = false
+  }: { className?: string, highLighted?: boolean }
+) => {
   return (
     <div
       className={
         clsx(
           "flex-shrink-0 flex-grow-0 basis-auto h-[66px] w-[66px] rounded-full border flex items-center justify-center",
-          highLighted && "bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888]"
+          highLighted && "bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888]",
+          className
         )
       } 
     >
@@ -58,6 +64,41 @@ export default function Page() {
       </div>
       <div>
         <h1>Messages</h1>
+        <div>
+          <div className="py-[6px] flex flex-row w-full">
+            <Profile className="mr-[10px]" highLighted={true} />
+            <div>chat container</div>
+            <div className="ml-auto">chat info</div>
+          </div>
+          <hr />
+          <div className="py-[6px]">
+            <Profile highLighted={true} />
+          </div>
+          <hr />
+          <div className="py-[6px]">
+            <Profile highLighted={true} />
+          </div>
+          <hr />
+          <div className="py-[6px]">
+            <Profile highLighted={true} />
+          </div>
+          <hr />
+          <div className="py-[6px]">
+            <Profile highLighted={true} />
+          </div>
+          <hr />
+          <div className="py-[6px]">
+            <Profile highLighted={true} />
+          </div>
+          <hr />
+          <div className="py-[6px]">
+            <Profile highLighted={true} />
+          </div>
+          <hr />
+          <div className="py-[6px]">
+            <Profile highLighted={true} />
+          </div>
+        </div>
       </div>
     </div>
   );
