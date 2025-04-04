@@ -12,11 +12,12 @@ const SearchBar = () => {
   );
 }
 
-const Profile = (
+const ProfilePicture = (
   {
     className = "",
-    highLighted = false
-  }: { className?: string, highLighted?: boolean }
+    highLighted = false,
+    picture,
+  }: { className?: string, highLighted?: boolean, picture: string }
 ) => {
   return (
     <div
@@ -29,13 +30,32 @@ const Profile = (
       } 
     >
       <div className="h-[58px] w-[58px] rounded-full border">
-        <img src="/images/pug.jpeg" alt="Profile" className="w-full h-full rounded-full object-cover" />
+        <img src={picture} alt="Profile" className="w-full h-full rounded-full object-cover" />
       </div>
     </div>
   );
 }
 
 export default function Page() {
+
+  const data = {
+    waitToChat: [
+      { profile: { name: "You", picture: "/images/you.png" } },
+      { profile: { name: "Emma", picture: "/images/emma.png" } },
+      { profile: { name: "Ava", picture: "/images/ava.png" } },
+      { profile: { name: "Sophia", picture: "/images/sophia.png" } },
+      { profile: { name: "Stella", picture: "/images/pug.jpeg" } },
+    ],
+    chatEnabled: [
+      { profile: { name: "Emelie", picture: "/images/emelie.png" } },
+      { profile: { name: "Abigail", picture: "/images/abigail.png" } },
+      { profile: { name: "Elizabeth", picture: "/images/elizabeth.png" } },
+      { profile: { name: "Penelope", picture: "/images/penelope.png" } },
+      { profile: { name: "Chloe", picture: "/images/chloe.png" } },
+      { profile: { name: "Grace", picture: "/images/grace.png" } },
+    ]
+  };
+
   return (
     <div style={{ paddingLeft: 40, paddingRight: 40 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -45,59 +65,27 @@ export default function Page() {
       <SearchBar />
       <div>
         <h1>Activities</h1>
-        <div
-          className="flex flex-row gap-[15px] overflow-x-scroll"
-        >
-          <Profile highLighted={true} />
-          <Profile />
-          <Profile highLighted={true} />
-          <Profile />
-          <Profile />
-          <Profile highLighted={true} />
-          <Profile />
-          <Profile />
-          <Profile />
-          <Profile highLighted={true} />
-          <Profile />
-          <Profile />
+
+        <div className="flex flex-row gap-[15px] overflow-x-scroll">
+          {data.waitToChat.map((item, index) => (
+            <ProfilePicture key={index} picture={item.profile.picture} />
+          ))}
         </div>
       </div>
       <div>
         <h1>Messages</h1>
+
         <div>
-          <div className="py-[6px] flex flex-row w-full">
-            <Profile className="mr-[10px]" highLighted={true} />
-            <div>chat container</div>
-            <div className="ml-auto">chat info</div>
-          </div>
-          <hr />
-          <div className="py-[6px]">
-            <Profile highLighted={true} />
-          </div>
-          <hr />
-          <div className="py-[6px]">
-            <Profile highLighted={true} />
-          </div>
-          <hr />
-          <div className="py-[6px]">
-            <Profile highLighted={true} />
-          </div>
-          <hr />
-          <div className="py-[6px]">
-            <Profile highLighted={true} />
-          </div>
-          <hr />
-          <div className="py-[6px]">
-            <Profile highLighted={true} />
-          </div>
-          <hr />
-          <div className="py-[6px]">
-            <Profile highLighted={true} />
-          </div>
-          <hr />
-          <div className="py-[6px]">
-            <Profile highLighted={true} />
-          </div>
+            {data.chatEnabled.map((item, index) => (
+            <div key={index}>
+              <div className="py-[6px] flex flex-row w-full">
+              <ProfilePicture className="mr-[10px]" highLighted={true} picture={item.profile.picture} />
+              <div>chat container</div>
+              <div className="ml-auto">chat info</div>
+              </div>
+              {index < data.chatEnabled.length - 1 && <hr className="my-2 border-gray-300" />}
+            </div>
+            ))}
         </div>
       </div>
     </div>
