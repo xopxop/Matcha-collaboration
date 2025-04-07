@@ -55,7 +55,7 @@ function NavLinks() {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
+    <div className="flex h-screen flex-col">
       <div className="flex-grow">{children}</div>
       <div className="flex-none h-[70px] flex justify-center items-center gap-[50px]">
         <NavLinks />
