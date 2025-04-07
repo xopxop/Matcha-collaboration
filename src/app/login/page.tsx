@@ -4,8 +4,8 @@ import BackButton from "@/ui/back-button";
 import { EmailForm } from "@/ui/login/email-form";
 import { VerificationCodeForm } from "@/ui/login/verification-form";
 import Image from 'next/image';
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 
 

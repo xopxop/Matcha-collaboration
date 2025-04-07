@@ -13,7 +13,7 @@ const ActivitiesPanel = ({
       <div className="text-[18px] font-medium">Activities</div>
       <div className="py-[10px] flex flex-row gap-[15px] overflow-x-scroll">
         {conversations.map((item, index) => (
-          <div>
+          <div key={index}>
             <ProfilePicture
               key={index}
               picture={item.profileImage}

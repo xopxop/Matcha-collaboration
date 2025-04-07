@@ -3,6 +3,7 @@ import {
   MagnifyingGlassIcon,
   AdjustmentsHorizontalIcon,
 } from "@heroicons/react/24/solid";
+import Image from "next/image";
 
 export const ProfilePicture = ({
   className,
@@ -16,17 +17,24 @@ export const ProfilePicture = ({
   return (
     <div
       className={clsx(
-        "flex-shrink-0 flex-grow-0 basis-auto h-[66px] w-[66px] rounded-full border flex items-center justify-center",
+        className,
+        "h-[66px] w-[66px] flex items-center justify-center rounded-full ",
         highLighted &&
           "bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888]",
-        className,
       )}
     >
-      <div className="h-[58px] w-[58px] rounded-full border">
-        <img
+      <div
+        className={clsx(
+          "h-[62px] w-[62px] flex items-center justify-center rounded-full",
+          highLighted && "bg-white",
+        )}
+      >
+        <Image
           src={picture}
           alt="Profile"
-          className="w-full h-full rounded-full object-cover"
+          width={58}
+          height={58}
+          className="w-[58px] h-[58px] rounded-full object-cover"
         />
       </div>
     </div>
