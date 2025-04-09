@@ -75,8 +75,8 @@ export default function BirthdaySetup ({formData, setFormData, nextStep }: Birth
       try {
         isAtLeast18YearsOld(formattedDate);
         setFormData({ ...formData, birthday: formattedDate });
-      } catch (e: any) {
-        setErrorMessage(e.message);
+      } catch (e) {
+        setErrorMessage((e as Error).message);
       }
     } else if (formData.birthday) {
       setFormData({ ...formData, birthday: '' });

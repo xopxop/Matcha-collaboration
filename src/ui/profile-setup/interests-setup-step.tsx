@@ -13,7 +13,7 @@ export default function InterestsSetup ({formData, setFormData, nextStep }: Inte
   const [selectedInterests, setSelectedInterests] = useState(formData.interests || []);
 
   const handleInterestSelection = (value: string) => {
-    let newArray = selectedInterests.includes(value) ? selectedInterests.filter(interest => interest !== value) : [...selectedInterests, value];
+    const newArray = selectedInterests.includes(value) ? selectedInterests.filter(interest => interest !== value) : [...selectedInterests, value];
     console.log('newArray', newArray);
     setSelectedInterests(newArray);
     if (newArray.length >= 5) {
@@ -25,7 +25,7 @@ export default function InterestsSetup ({formData, setFormData, nextStep }: Inte
 	  <div className="w-full px-12 sm:max-w-[640px] sm:mx-auto px">
       <label className="text-4xl block px-6 font-bold text-left sm:text-center">Interests</label>
       <p className="text-xs font-light text-left sm:text-center px-6 py-5">
-      Let everyone know what you're interested
+      Let everyone know what you&apos;re interested
       in by adding it to your profile.</p>
       <div className="m-auto flex flex-wrap">
         {interestOptions.map((option, index) => 

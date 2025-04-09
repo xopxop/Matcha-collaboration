@@ -2,7 +2,7 @@ import { Button } from "@/ui/button";
 import Image from 'next/image';
 
 interface WelcomeProps {
-	nextStep: (e: any) => void;
+	nextStep: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function Welcome ({ nextStep }: WelcomeProps) {
@@ -52,7 +52,7 @@ export default function Welcome ({ nextStep }: WelcomeProps) {
           <p className="font-bold text-sm">Be safe.</p>
         </div>
         <p className="text-xs font-light text-left sm:text-center">
-        Don't be too quick to give out personal information. Date Safely
+        Don&#39;t be too quick to give out personal information. Date Safely
         </p>
       </div>
       <div className="my-6">

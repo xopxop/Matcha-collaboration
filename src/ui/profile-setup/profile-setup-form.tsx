@@ -15,12 +15,12 @@ interface ProfileSetupFormProps {
 
 export default function profileSetupForm ({currentStep, nextStep, formData, setFormData}: ProfileSetupFormProps) {
 
-	const handleChange = (e:any) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log('here')
 		setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     // Perform validation and submit the form data
     console.log(formData);
@@ -47,5 +47,5 @@ export default function profileSetupForm ({currentStep, nextStep, formData, setF
         <Welcome nextStep={handleSubmit}/>
       }
     </form>
-)
+  )
 }
