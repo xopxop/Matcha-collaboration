@@ -22,17 +22,18 @@ const ProfileCard = ({ profile }: { profile: Profile }) => {
         height={200}
         className="h-[200px] w-[140px] rounded-lg object-cover"
       />
-      <div className="absolute bottom-[44px] w-full">
-        <div className="px-[16px] text-white text-[16px] font-medium">
-          {profile.name + ", " + profile.age}
-        </div>
-      </div>
+
       {profile.liked ? (
         <button className="absolute top-[6px] right-[5px] w-[40px] h-[40px] rotate-[10deg] bg-white rounded-full flex items-center justify-center">
           <HeartIcon fill="red" width={24} height={24} />
         </button>
       ) : (
         <>
+          <div className="absolute bottom-[44px] w-full">
+            <div className="px-[16px] text-white text-[16px] font-medium">
+              {profile.name + ", " + profile.age}
+            </div>
+          </div>
           <div className="absolute bottom-0 h-[40px] w-full backdrop-blur-[9px] rounded-b-lg"></div>
           <div className="absolute bottom-0 h-[40px] w-full rounded-b-2xl flex flex-row">
             <button className="w-full h-full flex justify-center items-center">
