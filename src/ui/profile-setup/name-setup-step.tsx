@@ -3,7 +3,7 @@ import { Button } from "@/ui/button";
 interface NameSetupProps {
 	name: string;
 	nextStep: () => void;
-  handleChange: (e: any) => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function NameSetup ({name, nextStep, handleChange}: NameSetupProps) {
