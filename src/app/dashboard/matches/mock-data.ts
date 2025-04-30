@@ -1,4 +1,4 @@
-import { DailyMatches } from "./page-data.interface";
+import { DailyMatches } from "./definition";
 
 export const mockData: DailyMatches[] = [
   {
