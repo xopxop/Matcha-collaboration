@@ -1,7 +1,7 @@
 import { HeartIcon, XMarkIcon } from "@heroicons/react/16/solid";
 import { ArrowsUpDownIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import { DailyMatches, Profile } from "./page-data.interface";
+import { DailyMatches, Profile } from "./definition";
 import { mockData } from "./mock-data";
 
 const SortingButton = () => {
@@ -77,7 +77,7 @@ const DailyProfilesCard = ({
   );
 };
 
-export default function Page() {
+export default async function Page() {
   return (
     <div className="pt-[10px] px-[40px] flex flex-col gap-[10px]">
       <div className="h-[52px] flex flex-row justify-between items-center">
