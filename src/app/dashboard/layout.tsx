@@ -1,51 +1,57 @@
-'use client';
+"use client";
+import clsx from "clsx";
 import Link from "next/link";
-import Image from 'next/image';
+import { usePathname } from "next/navigation";
+import { CardIcon, HeartIcon, MessageIcon, UserIcon } from "./icons";
+
 
 type NavLinkInfo = {
   name: string;
   href: string;
-  icon: string;
+  icon: JSX.Element;
 };
 
 const links: NavLinkInfo[] = [
   {
-    name: 'Likes',
-    href: '/dashboard/likes',
-    icon: '/icons/home.png',
+    name: "Swipe",
+    href: "/dashboard/swipe",
+    icon: CardIcon,
   },
   {
-    name: 'Swipe',
-    href: '/dashboard/swipe',
-    icon: '/icons/matcha.png',
+    name: "Matches",
+    href: "/dashboard/matches",
+    icon: HeartIcon,
   },
   {
-    name: 'User',
-    href: '/dashboard/user',
-    icon: '/icons/profile.png',
+    name: "Messages",
+    href: "/dashboard/messages",
+    icon: MessageIcon,
   },
   {
-    name: 'Messages',
-    href: '/dashboard/messages',
-    icon: '/icons/chat.png'
-  }
+    name: "User",
+    href: "/dashboard/user",
+    icon: UserIcon,
+  },
 ];
 
 function NavLinks() {
+  const pathname = usePathname();
+
   return (
     <>
       {links.map((link) => {
+        const isActive = pathname === link.href;
+
         return (
-          <Link
-            key={link.name}
-            href={link.href}
-          >
-            <Image
-              src={link.icon}
-              alt={link.name}
-              width={40}
-              height={40}
-            />
+          <Link key={link.name} href={link.href}>
+            <div
+              className={clsx(
+                "flex justify-center items-center w-[60px] h-[48px] text-[#adafbb]",
+                isActive && "text-[#FF4B4B] bg-[#F3F3F3] rounded-[10px]",
+              )}
+            >
+              {link.icon}
+            </div>
           </Link>
         );
       })}
@@ -56,12 +62,10 @@ function NavLinks() {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex h-screen flex-col">
-      <div className="flex-grow">{children}</div>
-      <div className="flex-none h-[70px] flex justify-center items-center gap-[50px]">
+      <div className="flex-grow overflow-y-auto">{children}</div>
+      <div className="flex-none bg-[#F3F3F3] h-[80px] flex justify-center gap-[29px]">
         <NavLinks />
       </div>
     </div>
   );
 }
-
-
